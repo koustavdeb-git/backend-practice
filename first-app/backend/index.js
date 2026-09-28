@@ -52,6 +52,7 @@ app.post("/employees", async (req, res) => {
     const emp = await pool.query(" INSERT INTO employees (name, department) VALUES ($1, $2) RETURNING *", [name, department]);
 
     res.status(201).json(emp.rows[0]);
+    console.log(emp.rows[0]);
 
   } catch (error) {
     res.status(500).json({
@@ -89,11 +90,13 @@ app.delete("/employees/:id", async (req, res) => {
     const emp = await pool.query("DELETE FROM employees WHERE id = $1 RETURNING *", [id]);
 
     if (emp.rows.length === 0) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "Employee not found",
       })
+
     }
     res.status(200).json({ message: "Employee deleted", employee: emp.rows[0] });
+    console.log(emp.rows[0]);
 
   } catch (error) {
     console.log(error);
