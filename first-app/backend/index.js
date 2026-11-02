@@ -1,5 +1,5 @@
 
-const pool = require("./src/config/db");
+require('dotenv').config();
 
 const app = require("./src/app");
 
@@ -12,3 +12,4 @@ app.listen(PORT, () => {
 
 
 
+console.log(process.env.JWT_SECRET ? 'JWT secret loaded' : 'JWT secret missing');
