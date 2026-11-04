@@ -24,12 +24,12 @@ const Login = () => {
 
     const onSubmit = async (data: LoginFormData) => {
         try {
-            const response = await axios.post("http://localhost:3000/auth/login", data)
+            const response = await axios.post("http://localhost:3000/api/auth/login", data)
 
             const result = response.data
             console.log(result)
 
-            if(!result.ok) {
+            if(!result.token) {
                 throw new Error(result.message || "Login Failed")
             }
 
