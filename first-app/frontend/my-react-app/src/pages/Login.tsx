@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import axios from 'axios';
+import api from "../api/axiosInterceptors";
 
 type LoginFormData = {
     email: string;
@@ -9,10 +8,6 @@ type LoginFormData = {
 }
 
 const Login = () => {
-    const [formData, setFormData] = useState<LoginFormData>({
-        email: "",
-        password: ""
-    })
 
     const {
         register,
@@ -24,7 +19,7 @@ const Login = () => {
 
     const onSubmit = async (data: LoginFormData) => {
         try {
-            const response = await axios.post("http://localhost:3000/api/auth/login", data)
+            const response = await api.post("/auth/login", data)
 
             const result = response.data
             console.log(result)
