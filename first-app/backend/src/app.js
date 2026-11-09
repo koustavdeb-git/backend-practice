@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Routes will be registered here
 
-app.use("/employees", employeeRoutes)
+app.use("/api/employees", employeeRoutes)
 app.use("/api/auth", authRoute)
 
 module.exports = app;
