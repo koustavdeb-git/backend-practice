@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import api from "../api/axiosInterceptors";
+import { useAppDispatch } from '../app/hooks';
+import { setCredentials } from '../features/auth/authSlice';
 
 type LoginFormData = {
     email: string;
@@ -8,7 +10,7 @@ type LoginFormData = {
 }
 
 const Login = () => {
-
+    const dispatch = useAppDispatch()
     const {
         register,
         handleSubmit,
@@ -29,6 +31,8 @@ const Login = () => {
             }
 
             localStorage.setItem("token", result.token)
+
+            dispatch(setCredentials(result.user))
 
             navigate("/")
 
