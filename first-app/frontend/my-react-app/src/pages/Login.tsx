@@ -136,6 +136,12 @@ const Login = () => {
                     </Link>
                 </p>
 
+                <div className='text-gray-600 text-center mt-3 border-1 rounded-md'>
+                    <h3 className='text-2xl font-bold'>Demo Accounts</h3>
+                    <p>koustav@example.com</p>
+                    <p>myPassword123</p>
+                </div>
+
             </div>
         </div>
     );
